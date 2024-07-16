@@ -1,20 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\project\\Project\\Project.csproj": {}
+    "D:\\programozas\\Internship\\internship-attila-nemeth\\Project\\Project.csproj": {}
   },
   "projects": {
-    "C:\\project\\Project\\Project.csproj": {
+    "D:\\programozas\\Internship\\internship-attila-nemeth\\Project\\Project.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\project\\Project\\Project.csproj",
+        "projectUniqueName": "D:\\programozas\\Internship\\internship-attila-nemeth\\Project\\Project.csproj",
         "projectName": "Project",
-        "projectPath": "C:\\project\\Project\\Project.csproj",
-        "packagesPath": "C:\\Users\\attila.nemeth\\.nuget\\packages\\",
-        "outputPath": "C:\\project\\Project\\obj\\",
+        "projectPath": "D:\\programozas\\Internship\\internship-attila-nemeth\\Project\\Project.csproj",
+        "packagesPath": "C:\\Users\\ATI\\.nuget\\packages\\",
+        "outputPath": "D:\\programozas\\Internship\\internship-attila-nemeth\\Project\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\attila.nemeth\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\ATI\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
