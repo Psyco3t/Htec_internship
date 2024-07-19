@@ -61,8 +61,8 @@ namespace Project.Controllers
         public async Task<ActionResult<UserPutDTO>> PutUser(UserPutDTO userDTO)
         {
             var user = await _userService.PutUserDTO(userDTO);
-            var model =await _context.Users.FindAsync(user.Value.Id);
-            if (model.Id != userDTO.Id)
+            var model =await _userService.GetUserDTO(user.Value.Id);
+            if (model.Value.Id != userDTO.Id)
             {
                 return BadRequest();
             }
