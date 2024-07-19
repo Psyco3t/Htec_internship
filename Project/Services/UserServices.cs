@@ -21,28 +21,34 @@ namespace Project.Services
             _mapper = mapper;
         }
 
-        public async Task<ActionResult<IEnumerable<UserDTO>>> GetUsersDTO() //setup automapper
+        public async Task<ActionResult<IEnumerable<UserDTO>>> GetUsersDTO()
         {
-            return await _context.Users.Select(m => _mapper.Map<User,UserDTO>(m)).ToListAsync();
+            return await _context.Users
+                .Select(m => _mapper
+                .Map<User,UserDTO>(m))
+                .ToListAsync();
         }
         public async Task<ActionResult<IEnumerable<UserAllDTO>>> GetUsersAllDTO()
         {
-            return await _context.Users.Select(m=>_mapper.Map<User,UserAllDTO>(m)).ToListAsync();
+            return await _context.Users
+                .Select(m=>_mapper
+                .Map<User,UserAllDTO>(m))
+                .ToListAsync();
         }
         public async Task<ActionResult<UserDTO>> GetUserDTO(int id)
         {
             var user = await _context.Users.FindAsync(id);
 
-            return _mapper.Map<User, UserDTO>(user);
+            return _mapper
+                .Map<User, UserDTO>(user);
         }
-        public async Task<ActionResult<UserPutDTO>> PutUserDTO(int id, UserPutDTO userDTO)
+        public async Task<ActionResult<UserPutDTO>> PutUserDTO(UserPutDTO userDTO)
         {
-            var user = await _context.Users.FindAsync(id);
+            var user = await _context.Users.FindAsync(userDTO.Id);
             user.UserName = userDTO.UserName;
             user.Password = userDTO.Password;
             user.Email = userDTO.Email;
             return _mapper.Map<User, UserPutDTO>(user);
-            //_context.Entry(user).State = EntityState.Modified;
         }
         public async Task<ActionResult<UserPostDTO>> PostUserDTO(UserPostDTO user)
         {
@@ -53,6 +59,19 @@ namespace Project.Services
             _context.Users.Add(model);
             await _context.SaveChangesAsync();
             return _mapper.Map<User,UserPostDTO>(model);
+        }
+        public void DeleteById(int id)
+        {
+            var userToDelete = _context.Users.FindAsync(id);
+            if (userToDelete.Result is not null)
+            {
+                _context.Users.Remove(userToDelete.Result);
+                _context.SaveChanges();
+            }
+        }
+        public bool UserExists(int id)
+        {
+            return _context.Users.Any(e => e.Id == id);
         }
     }
 }

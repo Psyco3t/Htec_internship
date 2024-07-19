@@ -57,11 +57,12 @@ namespace Project.Controllers
         }
 
         // PUT: api/Users/5
-        [HttpPut("{id}")]
-        public async Task<ActionResult<UserPutDTO>> PutUser(int id, UserPutDTO userDTO)
+        [HttpPut]
+        public async Task<ActionResult<UserPutDTO>> PutUser(UserPutDTO userDTO)
         {
-            var user = await _userService.PutUserDTO(id, userDTO);
-            if (id != userDTO.Id)
+            var user = await _userService.PutUserDTO(userDTO);
+            var model =await _context.Users.FindAsync(user.Value.Id);
+            if (model.Id != userDTO.Id)
             {
                 return BadRequest();
             }
@@ -71,7 +72,7 @@ namespace Project.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!UserExists(id))
+                if (!_userService.UserExists(userDTO.Id))
                 {
                     return NotFound();
                 }
@@ -97,34 +98,16 @@ namespace Project.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteUser(int id)
         {
-            var user = await _context.Users.FindAsync(id);
-            if (user == null)
+            var user = await _userService.GetUserDTO(id);
+            if (user is not null)
+            {
+                _userService.DeleteById(id);
+                return Ok();
+            }
+            else
             {
                 return NotFound();
             }
-
-            _context.Users.Remove(user);
-            await _context.SaveChangesAsync();
-
-            return NoContent();
-        }
-
-        private bool UserExists(int id)
-        {
-            return _context.Users.Any(e => e.Id == id);
-        }
-
-        /*private static UserDTO UserToDTO(User user) => new UserDTO {  //this is mapping done without automapper
-        Id = user.Id,
-        UserName=user.UserName,
-        Email=user.Email
-        };*/
-
-        private static UserDTO UserMapper(User user) //mapping done with automapper
-        {
-            var mapper = MapperConfig.MapperConfig.InitializeAutoMapper();
-            var UserDTO = mapper.Map<User, UserDTO>(user);
-            return UserDTO;
         }
     }
 }
