@@ -8618,11 +8618,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\project\\Project\\Project.csproj",
+      "projectUniqueName": "C:\\projectSetup\\Project\\Project.csproj",
       "projectName": "Project",
-      "projectPath": "C:\\project\\Project\\Project.csproj",
+      "projectPath": "C:\\projectSetup\\Project\\Project.csproj",
       "packagesPath": "C:\\Users\\attila.nemeth\\.nuget\\packages\\",
-      "outputPath": "C:\\project\\Project\\obj\\",
+      "outputPath": "C:\\projectSetup\\Project\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\attila.nemeth\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -7,9 +7,9 @@ namespace Project.Context
     /// <summary>
     /// User context is an extension of DBContext using base options and referencing models
     /// </summary>
-    public class UserContext : DbContext
+    public class DataContext : DbContext
     {
-        public UserContext(DbContextOptions<UserContext> options):base (options)
+        public DataContext(DbContextOptions<DataContext> options):base (options)
         {
 
         }

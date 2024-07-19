@@ -1,5 +1,7 @@
 using Project.Models;
 using Project.Context;
+using Project.Services;
+using Project.Controllers;
 using Project.MapperConfig;
 using AutoMapper;
 var builder = WebApplication.CreateBuilder(args);
@@ -7,10 +9,15 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddControllers();
+builder.Services.AddAutoMapper(typeof(MapperConfig));
+builder.Services.AddScoped<MapperProfiles>();
+builder.Services.AddScoped<UserServices>();
+builder.Services.AddScoped<UsersController>();
+builder.Services.AddControllersWithViews();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddSqlite<UserContext>("Data Source=Project.db");
+builder.Services.AddSqlite<DataContext>("Data Source=Project.db");
 
 var app = builder.Build();
 

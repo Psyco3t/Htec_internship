@@ -2,13 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.EntityFrameworkCore;
 using Project.Context;
 using Project.Models;
-using Project.MapperConfig;
-using AutoMapper;
+using Project.Models.DTO;
+using Project.Services;
 
 namespace Project.Controllers
 {
@@ -16,52 +18,53 @@ namespace Project.Controllers
     [ApiController]
     public class UsersController : ControllerBase
     {
-        private readonly UserContext _context;
+        private readonly DataContext _context;
+        UserServices _userService;
+        private readonly IMapper _mapper;
 
-        public UsersController(UserContext context)
+        public UsersController(DataContext context,UserServices userServices, IMapper mapper)
         {
             _context = context;
+            _userService = userServices;
+            _mapper = mapper;
         }
 
         // GET: api/Users
         [HttpGet]
         public async Task<ActionResult<IEnumerable<UserDTO>>> GetUsers()
         {
-            return await _context.Users.Select(x => UserMapper(x)).ToListAsync();
+            return await _userService.GetUsersDTO();
         }
 
         [HttpGet("GetAll")]
-        public async Task<ActionResult<IEnumerable<User>>> GetUsersAll()
+        public async Task<ActionResult<IEnumerable<UserAllDTO>>> GetUsersAll()
         {
-            return await _context.Users.ToListAsync();
+            return await _userService.GetUsersAllDTO();
         }
 
         // GET: api/Users/5
         [HttpGet("{id}")]
         public async Task<ActionResult<UserDTO>> GetUser(int id)
         {
-            var user = await _context.Users.FindAsync(id);
+            var user = _userService.GetUserDTO(id);
 
             if (user == null)
             {
                 return NotFound();
             }
 
-            return UserMapper(user);
+            return await user;
         }
 
         // PUT: api/Users/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutUser(int id, UserDTO user)
+        public async Task<ActionResult<UserPutDTO>> PutUser(int id, UserPutDTO userDTO)
         {
-            if (id != user.Id)
+            var user = await _userService.PutUserDTO(id, userDTO);
+            if (id != userDTO.Id)
             {
                 return BadRequest();
             }
-
-            _context.Entry(user).State = EntityState.Modified;
-
             try
             {
                 await _context.SaveChangesAsync();
@@ -82,14 +85,12 @@ namespace Project.Controllers
         }
 
         // POST: api/Users
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<User>> PostUser(User user)
+        public async Task<ActionResult<UserPostDTO>> PostUser(UserPostDTO userDTO)
         {
-            _context.Users.Add(user);
+            var model = await _userService.PostUserDTO(userDTO);
             await _context.SaveChangesAsync();
-
-            return CreatedAtAction("GetUser", new { id = user.Id }, user);
+            return Created();
         }
 
         // DELETE: api/Users/5
