@@ -4,6 +4,7 @@ using Project.Services;
 using Project.Controllers;
 using Project.MapperConfig;
 using AutoMapper;
+using Project.Interfaces;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -13,6 +14,7 @@ builder.Services.AddAutoMapper(typeof(MapperConfig));
 builder.Services.AddScoped<MapperProfiles>();
 builder.Services.AddScoped<UserServices>();
 builder.Services.AddScoped<RolesServices>();
+builder.Services.AddTransient<IEmailSender, EmailSender>();
 builder.Services.AddScoped<UsersController>();
 builder.Services.AddControllersWithViews();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
