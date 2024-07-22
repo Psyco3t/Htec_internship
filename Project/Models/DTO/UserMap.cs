@@ -7,6 +7,7 @@ namespace Project.Models.DTO
         public int Id { get; set; }
         public string UserName { get; set; }
         public string Email { get; set; }
+        public string RoleName { get; set; }
     }
     public class UserAllDTO
     {
@@ -14,6 +15,8 @@ namespace Project.Models.DTO
         public string UserName { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
+        public int RoleId { get; set; }
+        public string RoleName { get; set; }
     }
     public class UserPutDTO
     {
@@ -28,5 +31,11 @@ namespace Project.Models.DTO
         [Required]
         public string Password { get; set; }
         public string Email { get; set; }
+        public int RoleId { get; set; }
+    }
+    public class PutUserRoleDTO
+    {
+        public int Id { get; set; }
+        public int RoleId { get; set; }
     }
 }

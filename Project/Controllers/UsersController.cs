@@ -84,7 +84,32 @@ namespace Project.Controllers
 
             return NoContent();
         }
-
+        [HttpPut("PutRole")]
+        public async Task<ActionResult<PutUserRoleDTO>> PutUserRole(PutUserRoleDTO userDTO)
+        {
+            var user = await _userService.PutUserRoleDTO(userDTO);
+            var model = await _userService.GetUserDTO(user.Value.Id);
+            if (model.Value.Id != userDTO.Id)
+            {
+                return BadRequest();
+            }
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!_userService.UserExists(userDTO.Id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+            return NoContent();
+        }
         // POST: api/Users
         [HttpPost]
         public async Task<ActionResult<UserPostDTO>> PostUser(UserPostDTO userDTO)
