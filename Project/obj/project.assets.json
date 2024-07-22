@@ -8613,12 +8613,19 @@
     "C:\\Users\\ATI\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\ATI\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
+      "projectUniqueName": "D:\\programozas\\Internship\\internship-attila-nemeth\\Project\\Project.csproj",
       "projectUniqueName": "D:\\programozas\\project\\Project\\Project.csproj",
       "projectName": "Project",
+      "projectPath": "D:\\programozas\\Internship\\internship-attila-nemeth\\Project\\Project.csproj",
+      "packagesPath": "C:\\Users\\ATI\\.nuget\\packages\\",
+      "outputPath": "D:\\programozas\\Internship\\internship-attila-nemeth\\Project\\obj\\",
       "projectPath": "D:\\programozas\\project\\Project\\Project.csproj",
       "packagesPath": "C:\\Users\\ATI\\.nuget\\packages\\",
       "outputPath": "D:\\programozas\\project\\Project\\obj\\",
