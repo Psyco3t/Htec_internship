@@ -2,13 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.EntityFrameworkCore;
 using Project.Context;
 using Project.Models;
-using Project.MapperConfig;
-using AutoMapper;
+using Project.Models.DTO;
+using Project.Interfaces;
+using Project.Services;
 
 namespace Project.Controllers
 {
@@ -16,127 +19,118 @@ namespace Project.Controllers
  [ApiController]
  public class UsersController : ControllerBase
  {
-  private readonly UserContext _context;
+  UserServices _userService;
+  private readonly IEmailSender _emailSender;
+  private readonly IMapper _mapper;
 
-  public UsersController(UserContext context)
+  public UsersController(DataContext context, UserServices userServices,IEmailSender emailSender ,IMapper mapper)
   {
-   _context = context;
+   _userService = userServices;
+   _mapper = mapper;
+   _emailSender = emailSender;
   }
 
   // GET: api/Users
   [HttpGet]
   public async Task<ActionResult<IEnumerable<UserDTO>>> GetUsers()
   {
-   return await _context.Users.Select(x => UserMapper(x)).ToListAsync();
+   return await _userService.GetUsersDTO();
   }
 
   [HttpGet("GetAll")]
-  public async Task<ActionResult<IEnumerable<User>>> GetUsersAll()
+  public async Task<ActionResult<IEnumerable<UserAllDTO>>> GetUsersAll()
   {
-   return await _context.Users.ToListAsync();
-  }
-  [HttpGet("GetUserRole/{id}")]
-  public async Task<ActionResult<User>> GetUserRole(int id)
-  {
-   //var user = await _context.Users.FindAsync(id);
-   //var user = await _context.Users.Include(r => r.Role).SingleOrDefaultAsync(u=>u.Id==id);
-   var user =  await _context.Users.FromSql($"SELECT RoleName,Email,Password,UserName FROM Roles INNER JOIN Users ON Roles.RoleId = Users.RoleId").FirstAsync(u=>u.Id==id);
-   if (user == null)
-   {
-    return NotFound();
-   }
-
-   return user;
+   return await _userService.GetUsersAllDTO();
   }
 
   // GET: api/Users/5
   [HttpGet("{id}")]
   public async Task<ActionResult<UserDTO>> GetUser(int id)
   {
-   var user = await _context.Users.FindAsync(id);
+   var user = _userService.GetUserDTO(id);
 
    if (user == null)
    {
     return NotFound();
    }
 
-   return UserMapper(user);
+   return await user;
   }
 
   // PUT: api/Users/5
-  // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-  [HttpPut("{id}")]
-  public async Task<IActionResult> PutUser(int id, UserDTO user)
+  [HttpPut]
+  public async Task<ActionResult<UserPutDTO>> PutUser(UserPutDTO userDTO)
   {
-   if (id != user.Id)
+   var user = await _userService.PutUserDTO(userDTO);
+   var model = await _userService.GetUserDTO(user.Value.Id);
+   if (model.Value.Id != userDTO.Id)
    {
     return BadRequest();
    }
 
-   _context.Entry(user).State = EntityState.Modified;
-
-   try
+   if (!_userService.UserExists(userDTO.Id))
    {
-    await _context.SaveChangesAsync();
-   }
-   catch (DbUpdateConcurrencyException)
-   {
-    if (!UserExists(id))
-    {
-     return NotFound();
-    }
-    else
-    {
-     throw;
-    }
+    return NotFound();
    }
 
+   _userService.SaveChanges();
    return NoContent();
   }
-
-  // POST: api/Users
-  // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-  [HttpPost]
-  public async Task<ActionResult<User>> PostUser(User user)
+  [HttpPut("PutRole")]
+  public async Task<ActionResult<PutUserRoleDTO>> PutUserRole(PutUserRoleDTO userDTO)
   {
-   _context.Users.Add(user);
-   await _context.SaveChangesAsync();
+   var roleOld = await _userService.GetUserDTO(userDTO.Id);
+   var user = await _userService.PutUserRoleDTO(userDTO);
+   var model = await _userService.GetUserDTO(user.Value.Id);
+   string subject = "Role Assignment";
+   if (model.Value.Id != userDTO.Id)
+   {
+    return BadRequest();
+   }
 
-   return CreatedAtAction("GetUser", new { id = user.Id }, user);
+   if (!_userService.UserExists(userDTO.Id))
+   {
+    return NotFound();
+   }
+   _userService.SaveChanges();
+   var roleNew = await _userService.GetUserDTO(userDTO.Id); //use something like this but maybe with less calls
+   await _emailSender.SendEmailAsync(
+    "alternativeuser7@gmail.com"
+    , subject, "Your role has been changed from " +
+    roleOld.Value.RoleName.ToString() + " to " 
+    + roleNew.Value.RoleName.ToString()
+    );
+   return NoContent();
+  }
+  // POST: api/Users
+  [HttpPost]
+  public async Task<ActionResult<UserPostDTO>> PostUser(UserPostDTO userDTO)
+  {
+   var model = await _userService.PostUserDTO(userDTO);
+   if (model.Value.RoleId == 0)
+   {
+    return Created();
+   }
+   else
+   {
+    return BadRequest();
+   }
   }
 
   // DELETE: api/Users/5
   [HttpDelete("{id}")]
   public async Task<IActionResult> DeleteUser(int id)
   {
-   var user = await _context.Users.FindAsync(id);
-   if (user == null)
+   var user = await _userService.GetUserDTO(id);
+   if (user is not null)
+   {
+    _userService.DeleteById(id);
+    return Ok();
+   }
+   else
    {
     return NotFound();
    }
-
-   _context.Users.Remove(user);
-   await _context.SaveChangesAsync();
-
-   return NoContent();
-  }
-
-  private bool UserExists(int id)
-  {
-   return _context.Users.Any(e => e.Id == id);
-  }
-
-  /*private static UserDTO UserToDTO(User user) => new UserDTO {  //this is mapping done without automapper
-  Id = user.Id,
-  UserName=user.UserName,
-  Email=user.Email
-  };*/
-
-  private static UserDTO UserMapper(User user) //mapping done with automapper
-  {
-   var mapper = MapperConfig.MapperConfig.InitializeAutoMapper();
-   var UserDTO = mapper.Map<User, UserDTO>(user);
-   return UserDTO;
   }
  }
 }

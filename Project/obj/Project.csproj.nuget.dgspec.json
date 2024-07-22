@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\programozas\\Internship\\internship-attila-nemeth\\Project\\Project.csproj": {}
+    "D:\\programozas\\project\\Project\\Project.csproj": {}
   },
   "projects": {
-    "D:\\programozas\\Internship\\internship-attila-nemeth\\Project\\Project.csproj": {
+    "D:\\programozas\\project\\Project\\Project.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\programozas\\Internship\\internship-attila-nemeth\\Project\\Project.csproj",
+        "projectUniqueName": "D:\\programozas\\project\\Project\\Project.csproj",
         "projectName": "Project",
-        "projectPath": "D:\\programozas\\Internship\\internship-attila-nemeth\\Project\\Project.csproj",
+        "projectPath": "D:\\programozas\\project\\Project\\Project.csproj",
         "packagesPath": "C:\\Users\\ATI\\.nuget\\packages\\",
-        "outputPath": "D:\\programozas\\Internship\\internship-attila-nemeth\\Project\\obj\\",
+        "outputPath": "D:\\programozas\\project\\Project\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",

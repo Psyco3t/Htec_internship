@@ -9,7 +9,7 @@ using Project.Context;
 
 namespace Project.Migrations
 {
-    [DbContext(typeof(UserContext))]
+    [DbContext(typeof(DataContext))]
     [Migration("20240715075955_InitialCreate")]
     partial class InitialCreate
     {

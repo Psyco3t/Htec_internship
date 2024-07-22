@@ -9,7 +9,7 @@ using Project.Context;
 
 namespace Project.Migrations
 {
-    [DbContext(typeof(UserContext))]
+    [DbContext(typeof(DataContext))]
     [Migration("20240715081852_ContextRevision")]
     partial class ContextRevision
     {

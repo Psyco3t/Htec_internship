@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "3G7SpLPtMYM=",
+  "dgSpecHash": "y8faBRO9Hdc=",
   "success": true,
-  "projectFilePath": "D:\\programozas\\Internship\\internship-attila-nemeth\\Project\\Project.csproj",
+  "projectFilePath": "D:\\programozas\\project\\Project\\Project.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ATI\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
     "C:\\Users\\ATI\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",

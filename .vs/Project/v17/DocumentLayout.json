@@ -1,26 +1,22 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\programozas\\Internship\\internship-attila-nemeth\\",
+  "WorkspaceRootPath": "D:\\programozas\\project\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{5EA362F7-EDBD-4EB2-982D-DFE9A3BA6605}|Project\\Project.csproj|d:\\programozas\\internship\\internship-attila-nemeth\\project\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{5EA362F7-EDBD-4EB2-982D-DFE9A3BA6605}|Project\\Project.csproj|d:\\programozas\\project\\project\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{5EA362F7-EDBD-4EB2-982D-DFE9A3BA6605}|Project\\Project.csproj|solutionrelative:project\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5EA362F7-EDBD-4EB2-982D-DFE9A3BA6605}|Project\\Project.csproj|d:\\programozas\\internship\\internship-attila-nemeth\\project\\context\\usercontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5EA362F7-EDBD-4EB2-982D-DFE9A3BA6605}|Project\\Project.csproj|solutionrelative:project\\context\\usercontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{5EA362F7-EDBD-4EB2-982D-DFE9A3BA6605}|Project\\Project.csproj|d:\\programozas\\project\\project\\services\\enailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5EA362F7-EDBD-4EB2-982D-DFE9A3BA6605}|Project\\Project.csproj|solutionrelative:project\\services\\enailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5EA362F7-EDBD-4EB2-982D-DFE9A3BA6605}|Project\\Project.csproj|d:\\programozas\\internship\\internship-attila-nemeth\\project\\models\\users.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5EA362F7-EDBD-4EB2-982D-DFE9A3BA6605}|Project\\Project.csproj|solutionrelative:project\\models\\users.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5EA362F7-EDBD-4EB2-982D-DFE9A3BA6605}|Project\\Project.csproj|d:\\programozas\\internship\\internship-attila-nemeth\\project\\models\\roles.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5EA362F7-EDBD-4EB2-982D-DFE9A3BA6605}|Project\\Project.csproj|solutionrelative:project\\models\\roles.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5EA362F7-EDBD-4EB2-982D-DFE9A3BA6605}|Project\\Project.csproj|d:\\programozas\\internship\\internship-attila-nemeth\\project\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{5EA362F7-EDBD-4EB2-982D-DFE9A3BA6605}|Project\\Project.csproj|d:\\programozas\\project\\project\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{5EA362F7-EDBD-4EB2-982D-DFE9A3BA6605}|Project\\Project.csproj|solutionrelative:project\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5EA362F7-EDBD-4EB2-982D-DFE9A3BA6605}|Project\\Project.csproj|d:\\programozas\\project\\project\\interfaces\\emailsender.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5EA362F7-EDBD-4EB2-982D-DFE9A3BA6605}|Project\\Project.csproj|solutionrelative:project\\interfaces\\emailsender.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,8 +26,47 @@
       "DocumentGroups": [
         {
           "DockedHeight": 318,
-          "SelectedChildIndex": 10,
+          "SelectedChildIndex": 0,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "UsersController.cs",
+              "DocumentMoniker": "D:\\programozas\\project\\Project\\Controllers\\UsersController.cs",
+              "RelativeDocumentMoniker": "Project\\Controllers\\UsersController.cs",
+              "ToolTip": "D:\\programozas\\project\\Project\\Controllers\\UsersController.cs",
+              "RelativeToolTip": "Project\\Controllers\\UsersController.cs",
+              "ViewState": "AQIAAEoAAAAAAAAAAAAkwF8AAABvAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-22T16:02:59.012Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "EnailService.cs",
+              "DocumentMoniker": "D:\\programozas\\project\\Project\\Services\\EnailService.cs",
+              "RelativeDocumentMoniker": "Project\\Services\\EnailService.cs",
+              "ToolTip": "D:\\programozas\\project\\Project\\Services\\EnailService.cs",
+              "RelativeToolTip": "Project\\Services\\EnailService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAhAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-22T15:56:21.68Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\programozas\\project\\Project\\Program.cs",
+              "RelativeDocumentMoniker": "Project\\Program.cs",
+              "ToolTip": "D:\\programozas\\project\\Project\\Program.cs",
+              "RelativeToolTip": "Project\\Program.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAA3AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-22T15:55:18.158Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:1166852891:0:{bf84ea66-d821-4dba-b1b1-2777d8574775}"
@@ -54,37 +89,7 @@
             },
             {
               "$type": "Bookmark",
-              "Name": "ST:1391389166:0:{bf84ea66-d821-4dba-b1b1-2777d8574775}"
-            },
-            {
-              "$type": "Bookmark",
               "Name": "ST:1357641191:0:{bf84ea66-d821-4dba-b1b1-2777d8574775}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Roles.cs",
-              "DocumentMoniker": "D:\\programozas\\Internship\\internship-attila-nemeth\\Project\\Models\\Roles.cs",
-              "RelativeDocumentMoniker": "Project\\Models\\Roles.cs",
-              "ToolTip": "D:\\programozas\\Internship\\internship-attila-nemeth\\Project\\Models\\Roles.cs",
-              "RelativeToolTip": "Project\\Models\\Roles.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAPAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-16T16:58:58.214Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Users.cs",
-              "DocumentMoniker": "D:\\programozas\\Internship\\internship-attila-nemeth\\Project\\Models\\Users.cs",
-              "RelativeDocumentMoniker": "Project\\Models\\Users.cs",
-              "ToolTip": "D:\\programozas\\Internship\\internship-attila-nemeth\\Project\\Models\\Users.cs",
-              "RelativeToolTip": "Project\\Models\\Users.cs",
-              "ViewState": "AQIAAAgAAAAAAAAAAAA1wBMAAAAOAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-15T07:08:32.789Z",
-              "EditorCaption": ""
             },
             {
               "$type": "Bookmark",
@@ -92,41 +97,16 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "UsersController.cs",
-              "DocumentMoniker": "D:\\programozas\\Internship\\internship-attila-nemeth\\Project\\Controllers\\UsersController.cs",
-              "RelativeDocumentMoniker": "Project\\Controllers\\UsersController.cs",
-              "ToolTip": "D:\\programozas\\Internship\\internship-attila-nemeth\\Project\\Controllers\\UsersController.cs",
-              "RelativeToolTip": "Project\\Controllers\\UsersController.cs",
-              "ViewState": "AQIAABwAAAAAAAAAAAAIwCoAAABaAAAA",
+              "DocumentIndex": 3,
+              "Title": "EmailSender.cs",
+              "DocumentMoniker": "D:\\programozas\\project\\Project\\Interfaces\\EmailSender.cs",
+              "RelativeDocumentMoniker": "Project\\Interfaces\\EmailSender.cs",
+              "ToolTip": "D:\\programozas\\project\\Project\\Interfaces\\EmailSender.cs",
+              "RelativeToolTip": "Project\\Interfaces\\EmailSender.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAA4AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-15T08:12:51.507Z",
+              "WhenOpened": "2024-07-22T15:54:15.21Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "UserContext.cs",
-              "DocumentMoniker": "D:\\programozas\\Internship\\internship-attila-nemeth\\Project\\Context\\UserContext.cs",
-              "RelativeDocumentMoniker": "Project\\Context\\UserContext.cs",
-              "ToolTip": "D:\\programozas\\Internship\\internship-attila-nemeth\\Project\\Context\\UserContext.cs",
-              "RelativeToolTip": "Project\\Context\\UserContext.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAyAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-15T07:13:54.989Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Program.cs",
-              "DocumentMoniker": "D:\\programozas\\Internship\\internship-attila-nemeth\\Project\\Program.cs",
-              "RelativeDocumentMoniker": "Project\\Program.cs",
-              "ToolTip": "D:\\programozas\\Internship\\internship-attila-nemeth\\Project\\Program.cs",
-              "RelativeToolTip": "Project\\Program.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAAkAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-15T06:53:41.462Z"
             }
           ]
         },
