@@ -115,8 +115,15 @@ namespace Project.Controllers
         public async Task<ActionResult<UserPostDTO>> PostUser(UserPostDTO userDTO)
         {
             var model = await _userService.PostUserDTO(userDTO);
-            await _context.SaveChangesAsync();
-            return Created();
+            if(model.Value.RoleId == 0)
+            {
+                await _context.SaveChangesAsync();
+                return Created();
+            }
+            else
+            {
+                return BadRequest();
+            }
         }
 
         // DELETE: api/Users/5
