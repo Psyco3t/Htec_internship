@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 namespace Project.Models
 {
     public class User
@@ -12,5 +13,8 @@ namespace Project.Models
         [Required]
         [MaxLength(100)]
         public string Email { get; set; }
+        public int ?RoleId { get; set; }
+        [JsonIgnore]
+        public Role ?Role { get; set; }
     }
 }
