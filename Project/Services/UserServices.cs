@@ -89,7 +89,7 @@ namespace Project.Services
 
         public async void SaveChanges()
         {
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
         }
     }
 }

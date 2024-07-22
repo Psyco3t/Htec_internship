@@ -18,13 +18,11 @@ namespace Project.Controllers
     [ApiController]
     public class RolesController : ControllerBase
     {
-        private readonly DataContext _context;
         private readonly RolesServices _roleService;
         private readonly IMapper _mapper;
 
         public RolesController(DataContext context, RolesServices roleService, IMapper mapper)
         {
-            _context = context;
             _roleService = roleService;
             _mapper = mapper;
         }
