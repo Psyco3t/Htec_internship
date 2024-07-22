@@ -8,6 +8,7 @@ using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using NuGet.Versioning;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 namespace Project.Services
 {
     public class UserServices
@@ -51,6 +52,7 @@ namespace Project.Services
             user.UserName = userDTO.UserName;
             user.Password = userDTO.Password;
             user.Email = userDTO.Email;
+            await _context.SaveChangesAsync();
             return _mapper.Map<User, UserPutDTO>(user);
         }
 
@@ -83,6 +85,11 @@ namespace Project.Services
         public bool UserExists(int id)
         {
             return _context.Users.Any(e => e.Id == id);
+        }
+
+        public async void SaveChanges()
+        {
+            _context.SaveChanges();
         }
     }
 }

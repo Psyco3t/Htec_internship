@@ -18,13 +18,11 @@ namespace Project.Controllers
     [ApiController]
     public class UsersController : ControllerBase
     {
-        private readonly DataContext _context;
         UserServices _userService;
         private readonly IMapper _mapper;
 
-        public UsersController(DataContext context,UserServices userServices, IMapper mapper)
+        public UsersController(DataContext context, UserServices userServices, IMapper mapper)
         {
-            _context = context;
             _userService = userServices;
             _mapper = mapper;
         }
@@ -61,27 +59,18 @@ namespace Project.Controllers
         public async Task<ActionResult<UserPutDTO>> PutUser(UserPutDTO userDTO)
         {
             var user = await _userService.PutUserDTO(userDTO);
-            var model =await _userService.GetUserDTO(user.Value.Id);
+            var model = await _userService.GetUserDTO(user.Value.Id);
             if (model.Value.Id != userDTO.Id)
             {
                 return BadRequest();
             }
-            try
+
+            if (!_userService.UserExists(userDTO.Id))
             {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!_userService.UserExists(userDTO.Id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                return NotFound();
             }
 
+            _userService.SaveChanges();
             return NoContent();
         }
         [HttpPut("PutRole")]
@@ -93,21 +82,12 @@ namespace Project.Controllers
             {
                 return BadRequest();
             }
-            try
+
+            if (!_userService.UserExists(userDTO.Id))
             {
-                await _context.SaveChangesAsync();
+                return NotFound();
             }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!_userService.UserExists(userDTO.Id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+            _userService.SaveChanges();
             return NoContent();
         }
         // POST: api/Users
@@ -115,9 +95,8 @@ namespace Project.Controllers
         public async Task<ActionResult<UserPostDTO>> PostUser(UserPostDTO userDTO)
         {
             var model = await _userService.PostUserDTO(userDTO);
-            if(model.Value.RoleId == 0)
+            if (model.Value.RoleId == 0)
             {
-                await _context.SaveChangesAsync();
                 return Created();
             }
             else

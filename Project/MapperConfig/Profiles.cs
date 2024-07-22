@@ -29,6 +29,8 @@ namespace Project.MapperConfig
                 .ForMember(roleId => roleId.RoleId, 
                 roleIdDTO => roleIdDTO
                 .MapFrom(src => src.Role.RoleId)).ReverseMap();
+            CreateMap<Role, RolesDTO>().ReverseMap();
+            CreateMap<Role, PostRoleDTO>().ReverseMap();
         }
     }
 }

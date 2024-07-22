@@ -12,6 +12,7 @@ builder.Services.AddControllers();
 builder.Services.AddAutoMapper(typeof(MapperConfig));
 builder.Services.AddScoped<MapperProfiles>();
 builder.Services.AddScoped<UserServices>();
+builder.Services.AddScoped<RolesServices>();
 builder.Services.AddScoped<UsersController>();
 builder.Services.AddControllersWithViews();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
